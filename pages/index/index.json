@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "葫芦热点",
+  "usingComponents": {
+    "videoGroup": "/Component/AuglyVideo"
+  },
+  "enablePullDownRefresh":true
+}

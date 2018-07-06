@@ -1,0 +1,32 @@
+<!--Component/AuglyVideo.wxml-->
+<view class='videoItem' wx:for="{{videoList}}">
+  <video objectFit='fill' show-center-play-btn='{{showPlay}}' id='myVideo{{item.id}}' data-index="{{index}}" src='{{item.videoUrl}}' wx:if="{{playIndex == index}}">
+  </video>
+  <view class='myposter' bindtap="videoPlay" id="{{item.id}}" data-index="{{index}}" style="display: {{playIndex==index ? 'none' : 'block'}};" data-id='{{item.id}}' data-title='{{item.title}}' data-cover='{{item.cover}}' data-duration='{{item.duration}}'
+    data-allnum="{{item.palyCnt+item.playInitCnt}}">
+    <image src='{{item.cover}}'>
+
+    </image>
+    <form bindsubmit="submitInfo" report-submit='true'>
+      <button class='videoTitle' hover-class='none' form-type='submit'>
+        {{item.title}}
+      </button>
+    </form>
+    <form bindsubmit="submitInfo" report-submit='true'>
+      <button class='iconfont icon-bofang' hover-class='none' id="{{item.id}}" data-index="{{index}}" form-type='submit'></button>
+    </form>
+
+    <view class='time'>{{item.duration}}</view>
+  </view>
+  <view class='videoRes'>
+    <view class='playnum'>{{item.palyCnt+item.playInitCnt}}次播放</view>
+    <button class='iconfont icon-zhuanfa' hover-class='none' open-type='share' data-id='{{item.id}}' data-title='{{item.title}}' data-cover='{{item.cover}}' data-duration='{{item.duration}}' data-allnum="{{item.palyCnt+item.playInitCnt}}"></button>
+  </view>
+</view>
+
+
+
+<form bindsubmit="submitInfo" report-submit='true' wx:if="{{aps.isShow=='t'}}">
+  <navigator class='tominApp' hover-class='none' form-type='submit' style="background-image:url('{{aps.image}}');" open-type="navigate" target="miniProgram" app-id='{{aps.val}}'>
+  </navigator>
+</form>
